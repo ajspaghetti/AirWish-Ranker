@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AirWish Ranker</title>
+<link rel="stylesheet" href="app.css">
+<style>
+  body { width: 320px; padding: 16px; margin: 0; }
+  h1 { font-size: 16px; margin: 0 0 4px; }
+  .sub { color: #A9B8C6; font-size: 12px; margin-bottom: 12px; }
+  .btn { width: 100%; margin-top: 8px; }
+  ul { list-style: none; padding: 0; margin: 12px 0 0; font-size: 12px; color: #A9B8C6; }
+  li { padding: 2px 0; }
+  .ok { color: #7BD88F; } .no { color: #F2C14E; }
+</style>
+</head>
+<body>
+  <h1>AirWish Ranker</h1>
+  <div class="sub" id="sub">Checking this tab...</div>
+  <button class="btn primary" id="run" hidden>Rank this wishlist</button>
+  <button class="btn" id="last" hidden>Open last results</button>
+  <ul id="learned"></ul>
+  <script src="popup.js"></script>
+</body>
+</html>

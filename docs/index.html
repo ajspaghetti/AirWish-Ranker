@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>AirWish Ranker</title>
+<meta property="og:title" content="AirWish Ranker">
+<meta property="og:description" content="A Chrome extension that ranks every listing in an Airbnb wishlist and shares a shortlist to any phone.">
+<meta property="og:image" content="https://ajspaghetti.github.io/AirWish-Ranker/og.png">
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;background:#0F1B26;color:#F3EEE6;font:16px/1.55 -apple-system,BlinkMacSystemFont,Inter,system-ui,sans-serif}
+header{background:#E8C26A;color:#0F1B26;padding:28px 20px}
+.w{max-width:760px;margin:0 auto}
+h1{margin:0;font-size:28px}header p{margin:6px 0 0}
+main{padding:24px 20px 48px}h2{font-size:18px;margin:28px 0 8px}
+li{margin:4px 0}a{color:#F3EEE6}.muted{color:#A9B8C6;font-size:14px}
+.btn{display:inline-block;background:#F28DB2;color:#0F1B26;font-weight:800;text-decoration:none;border-radius:10px;padding:11px 16px;margin-top:14px}
+</style>
+</head>
+<body>
+<header><div class="w"><h1>AirWish Ranker</h1><p>Ranks every listing in an Airbnb wishlist, anywhere in the world, and shares a shortlist to any phone.</p></div></header>
+<main class="w">
+<h2>What it does</h2>
+<ul>
+<li>Reads every listing and every review in the wishlist you have open, using your own Airbnb session.</li>
+<li>Maps what is around each listing with OpenStreetMap: transit, the center, places to eat, sights, parks, the sea, lakes and rivers, and routes walking times.</li>
+<li>Tags each listing (pool, rooftop, real beds for everyone, must climb stairs, damp mentioned in reviews...) and scores it in seven categories you can reweight.</li>
+<li>Sort, search and filter by any tag, town, price, beds or walking time.</li>
+<li>Shares up to five listings to a phone as a link, a text message or a single page file.</li>
+</ul>
+<h2>Install</h2>
+<ol>
+<li>Download the repository (Code, Download ZIP) and unzip it somewhere permanent.</li>
+<li>Open <code>chrome://extensions</code>, turn on Developer mode, click Load unpacked and pick the <code>extension</code> folder.</li>
+<li>Open any Airbnb wishlist, click the AirWish Ranker icon, then Rank this wishlist.</li>
+</ol>
+<a class="btn" href="https://github.com/ajspaghetti/AirWish-Ranker">View on GitHub</a>
+<h2>Privacy</h2>
+<p class="muted">Everything runs in your browser. Review text is never stored, only which flags each review triggered. Shared links carry the shortlist after the # in the address, which browsers never send to this server.</p>
+</main>
+</body>
+</html>

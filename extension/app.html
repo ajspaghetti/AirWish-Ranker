@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AirWish Ranker</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-l">
+    <h1 id="title">AirWish Ranker</h1>
+    <div class="meta" id="meta">Loading...</div>
+  </div>
+  <div class="top-r">
+    <button id="settingsBtn" class="ink">Settings</button>
+    <button id="rerun" class="ink">Re-run</button>
+  </div>
+</header>
+<div class="wrap">
+  <section class="panel" id="stepsPanel" hidden>
+    <div class="steps" id="steps"></div>
+    <div class="notice" id="notice"></div>
+  </section>
+  <div class="banner" id="banner" hidden></div>
+
+  <section id="main" hidden>
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Search names, towns, tags, beds, transit... (all words must match)" aria-label="Search listings">
+      <label class="sel">Preset <select id="preset"></select></label>
+      <button id="filtersBtn" aria-expanded="false">Filters <span class="count" id="fCount"></span></button>
+      <span class="grow"></span>
+      <button id="shareBtn" class="primary">Share to phone <span class="count" id="pickCount"></span></button>
+      <button id="copyTsv">Copy for Google Sheets</button>
+      <button id="dlCsv">Download CSV</button>
+    </div>
+    <section class="panel filters" id="filters" hidden>
+      <div class="frow" id="townRow"></div>
+      <div class="frow nums">
+        <label>Max $/adult/night <input type="number" min="0" step="5" data-num="maxPpan"></label>
+        <label>Min rating <input type="number" min="0" max="5" step="0.05" data-num="minRating"></label>
+        <label>Min reviews <input type="number" min="0" step="5" data-num="minReviews"></label>
+        <label>Min bedrooms <input type="number" min="0" step="1" data-num="minBedrooms"></label>
+        <label>Min real-bed spots <input type="number" min="0" step="1" data-num="minRealCap"></label>
+        <label>Min bathrooms <input type="number" min="0" step="0.5" data-num="minBaths"></label>
+        <label>Max walk to transit (min) <input type="number" min="0" step="1" data-num="maxTransit"></label>
+        <label>Max walk to center (min) <input type="number" min="0" step="1" data-num="maxCenter"></label>
+      </div>
+      <div class="frow toggles">
+        <label><input type="checkbox" data-flag="hideNo"> Hide listings with a No vote</label>
+        <label><input type="checkbox" data-flag="onlyYes"> Only listings with a Yes vote</label>
+        <label><input type="checkbox" data-flag="noRed"> Hide listings with red flag tags</label>
+        <label><input type="checkbox" data-flag="budgetOnly"> Only budget-eligible</label>
+        <span class="grow"></span>
+        <button id="clearFilters">Clear filters</button>
+      </div>
+      <p class="hint">Tags: click once to require (✓), twice to exclude (✕), three times to clear. Counts show how many listings have each tag.</p>
+      <div id="tagChips"></div>
+    </section>
+    <nav class="tabs" id="tabs"></nav>
+    <div class="recipe" id="recipe"></div>
+    <div class="summary" id="summary"></div>
+    <div class="tablewrap"><table class="board" id="board"></table></div>
+    <div class="foot" id="foot"></div>
+  </section>
+  <p class="diag"><button id="diag">Copy diagnostics</button> <span class="muted">If a run fails or fields come back empty, paste this into Claude to get a fix.</span></p>
+</div>
+
+<dialog id="settingsDlg" aria-label="Scoring settings">
+  <div class="dlg-head">
+    <h2>Scoring settings</h2>
+    <span class="muted" id="setState"></span>
+    <span class="grow"></span>
+    <button id="resetAll">Reset to defaults</button>
+    <button class="primary" id="closeSettings">Done</button>
+  </div>
+  <div class="dlg-body">
+    <nav class="dlg-nav" id="setNav"></nav>
+    <div class="dlg-main" id="setMain"></div>
+  </div>
+</dialog>
+<dialog id="shareDlg" aria-label="Share to phone">
+  <div class="dlg-head">
+    <h2>Share to phone</h2>
+    <span class="muted">Up to 5 listings, readable on any phone</span>
+    <span class="grow"></span>
+    <button class="primary" id="closeShare">Done</button>
+  </div>
+  <div class="share-body">
+    <div class="share-l">
+      <h3>Which listings</h3>
+      <label><input type="radio" name="shareSrc" value="top" checked> Top 5 in the current view</label><br>
+      <label><input type="radio" name="shareSrc" value="picks"> My picks <span id="pickInfo" class="muted"></span></label>
+      <p class="muted">Tick the box at the start of any row to pick it (up to 5). Picks keep the table's sort order.</p>
+      <ol id="shareList"></ol>
+      <h3>Send it</h3>
+      <div class="share-actions">
+        <button class="primary" id="shCopyLink">Copy link</button>
+        <button id="shCopyText">Copy text message</button>
+        <button id="shDownload">Download page file</button>
+      </div>
+      <p class="muted" id="shStatus"></p>
+      <p class="muted"><b>Link:</b> paste into iMessage or SMS; it opens as a page in the phone's browser. The listings ride inside the link itself, so nothing is stored on a server.<br>
+      <b>Text message:</b> works on any phone, with an Airbnb link per listing.<br>
+      <b>Page file:</b> a single file with photos built in. Attach it in Messages or AirDrop it; it opens without internet.</p>
+    </div>
+    <div class="share-r"><div class="phone"><iframe id="shPreview" title="Phone preview" sandbox="allow-same-origin"></iframe></div></div>
+  </div>
+</dialog>
+<script src="tags.js"></script>
+<script src="model.js"></script>
+<script src="scorer.js"></script>
+<script src="geo.js"></script>
+<script src="share.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

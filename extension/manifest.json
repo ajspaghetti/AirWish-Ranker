@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "AirWish Ranker",
+  "version": "2.1.0",
+  "description": "Ranks every listing in the Airbnb wishlist you have open: beds, amenities, red and green flags, walkability and walking times, with a phone-friendly share page.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "webRequest",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://www.airbnb.com/*",
+    "https://a0.muscache.com/*",
+    "https://overpass-api.de/*",
+    "https://overpass.kumi.systems/*",
+    "https://valhalla1.openstreetmap.de/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Rank this wishlist",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  }
+}
